@@ -1,0 +1,53 @@
+<mvc:View controllerName="com.cpro.jhr.training.Training1.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<Table id="flightTable" inset="false" items="{ path: '/flightSet' }" growing="true" growingThreshold="10">
+							<headerToolbar>
+								<Toolbar>
+									<Title text="{i18n>View1.flights}" level="H2"/>
+									<ToolbarSpacer/>
+									<SearchField id="searchField" width="20rem" tooltip="{i18n>View1.Searchtip}" search="onSearch"/>
+									<Button tooltip="View Sort Settings" icon="sap-icon://sort" press="handleSortButtonPressed"/>
+									<Button tooltip="View Filter Settings" icon="sap-icon://filter" press="handleFilterButtonPressed"/>
+									<Button tooltip="View Group Settings" icon="sap-icon://group-2" press="handleGroupButtonPressed"/>
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column width="12em">
+									<Text text="{/flightSet/Fluggesellschaft/#@sap:label}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{/flightSet/Flugzeugtyp/#@sap:label}"/>
+								</Column>
+								<Column minScreenWidth="Desktop" demandPopin="true">
+									<Text text="{/flightSet/Flugpreis/#@sap:label}"/>
+								</Column>
+								<Column minScreenWidth="Desktop" demandPopin="true">
+									<Text text="{/flightSet/Flugdatum/#@sap:label}"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<ObjectIdentifier title="{Fluggesellschaft}"/>
+										<Text text="{Flugzeugtyp}"/>
+										<!--<Text text="{Flugpreis} {Hauswaehrung}"/>-->
+										<!--<ObjectNumber number="{Flugpreis}" unit="{Hauswaehrung}"/>-->
+										<!--parts: [{path: 'Flugpreis'}, {path: 'Hauswaehrung'}]-->
+										<!--type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: true}-->
+										<Text
+											text="{ parts: [{path: 'Flugpreis'}, {path: 'Hauswaehrung'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: true} }"/>
+										<Text text="{ parts: [{path: 'Flugdatum'}, {path: 'Hauswaehrung'}], formatter: '.formatter.dateFormatter' }"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

@@ -1,0 +1,22 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZFLIGHT_SRV" xml:lang="de" sap:schema-version="1">
+			<EntityType Name="flightcarrier" sap:content-version="1">
+				<Key><PropertyRef Name="FluggesellschaftID"/></Key><Property Name="Waehrung" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Hauswährung d. Fluggesellschaft"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false"/><Property Name="Fluggesellschaft" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Fluggesellschaft" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="FluggesellschaftID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="FluggesellschaftID"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="flight" sap:content-version="1">
+				<Key><PropertyRef Name="FluggesellschaftID"/></Key><Property Name="Flugdatum" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Flugdatum"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Hauswaehrung" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Hauswährung" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Flugpreis" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="0" sap:unicode="false" sap:label="Flugpreis"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Flugzeugtyp" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Flugzeugtyp" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="Fluggesellschaft" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Fluggesellschaft" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false"/><Property Name="FluggesellschaftID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="FluggesellschaftID"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="ZFLIGHT_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="flightcarrierSet" EntityType="ZFLIGHT_SRV.flightcarrier" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="flightSet" EntityType="ZFLIGHT_SRV.flight" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/></EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZFLIGHT_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZFLIGHT_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
