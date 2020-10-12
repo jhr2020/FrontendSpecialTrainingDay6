@@ -15,6 +15,11 @@
 									<Button tooltip="View Group Settings" icon="sap-icon://group-2" press="handleGroupButtonPressed"/>
 								</Toolbar>
 							</headerToolbar>
+							<infoToolbar>
+								<Toolbar id="infoToolbar" visible="false">
+									<Text id="infoText"></Text>
+								</Toolbar>
+							</infoToolbar>
 							<columns>
 								<Column width="12em">
 									<Text text="{/flightSet/Fluggesellschaft/#@sap:label}"/>
@@ -30,7 +35,7 @@
 								</Column>
 							</columns>
 							<items>
-								<ColumnListItem>
+								<ColumnListItem type="Navigation" press="onListItemPress">
 									<cells>
 										<ObjectIdentifier title="{Fluggesellschaft}"/>
 										<Text text="{Flugzeugtyp}"/>
@@ -46,6 +51,12 @@
 							</items>
 						</Table>
 					</content>
+					<footer>
+						<Toolbar>
+							<ToolbarSpacer/>
+							<Button text="{i18n>nextButton}" press="onButtonPress"/>
+						</Toolbar>
+					</footer>
 				</Page>
 			</pages>
 		</App>

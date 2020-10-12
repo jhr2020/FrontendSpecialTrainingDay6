@@ -101,13 +101,18 @@
 				"pattern": "view2",
 				"greedy": false,
 				"target": ["View2"]
+			}, {
+				"name": "View2Query",
+				"pattern": "View2/{fluggesellschaftID}:warehouseNumber:{?query}",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["View2"]
 			}],
 			"targets": {
 				"TargetView1": {
 					"viewType": "XML",
 					"transition": "slide",
 					"clearControlAggregation": false,
-					"viewId": "View1",
 					"viewName": "View1"
 				},
 				"View2": {

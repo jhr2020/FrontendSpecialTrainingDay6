@@ -4,6 +4,10 @@ sap.ui.define([
 	"use strict";
 
 	return Controller.extend("com.cpro.jhr.training.Training1.controller.View2", {
+		
+		getRouter: function () {
+			return sap.ui.core.UIComponent.getRouterFor(this);
+		},
 
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
@@ -11,7 +15,11 @@ sap.ui.define([
 		 * @memberOf com.cpro.jhr.training.Training1.view.View2
 		 */
 		onInit: function () {
-
+			this.getRouter().getRoute("View2Query").attachPatternMatched(this.onView2QueryMatched, this);
+		},
+		
+		onView2QueryMatched: function(oEvent){
+			// oEvent.getParameter("arguments").fluggesellschaftID
 		},
 
 		/**
@@ -39,6 +47,10 @@ sap.ui.define([
 		//	onExit: function() {
 		//
 		//	}
+		
+		onNavBack: function(oEvent){
+			this.getRouter().navTo("RouteView1");
+		}
 
 	});
 
