@@ -1,6 +1,7 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"sap/ui/core/mvc/Controller",
+	"../model/models"
+], function (Controller, Model) {
 	"use strict";
 
 	return Controller.extend("com.cpro.jhr.training.Training1.controller.View2", {
@@ -15,11 +16,22 @@ sap.ui.define([
 		 * @memberOf com.cpro.jhr.training.Training1.view.View2
 		 */
 		onInit: function () {
+			this.getRouter().getRoute("View2").attachPatternMatched(this.onView2Matched, this);
 			this.getRouter().getRoute("View2Query").attachPatternMatched(this.onView2QueryMatched, this);
+			
+			this.getView().setModel(Model.createViewModel(), "viewModel");
+			var oModel = this.getView().getModel("viewModel");
+			oModel.setProperty("/bindingMode", oModel.getDefaultBindingMode());
+			oModel.setProperty("/content", "content");
+		},
+		
+		onView2Matched: function(oEvent){
+			this.byId("ElementBindingForm").bindElement("/SomeEntity('someID')");
 		},
 		
 		onView2QueryMatched: function(oEvent){
-			// oEvent.getParameter("arguments").fluggesellschaftID
+			var sFluggesellschaftID = oEvent.getParameter("arguments").fluggesellschaftID;
+			this.byId("ElementBindingForm").bindElement("/flightSet('"+ sFluggesellschaftID +"')");
 		},
 
 		/**
@@ -50,6 +62,16 @@ sap.ui.define([
 		
 		onNavBack: function(oEvent){
 			this.getRouter().navTo("RouteView1");
+		},
+		
+		onToggleButtonPress: function(oEvent){
+			var oViewModel = this.getView().getModel("viewModel");
+			
+			if(oViewModel.getProperty("/test") === "Data"){
+				oViewModel.setProperty("/test", "");
+			}
+			else
+				oViewModel.setProperty("/test", "Data");
 		}
 
 	});

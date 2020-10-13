@@ -1,43 +1,50 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
-	controllerName="com.cpro.jhr.training.Training1.controller.View2" xmlns:html="http://www.w3.org/1999/xhtml">
+	controllerName="com.cpro.jhr.training.Training1.controller.View2" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="com.cpro.jhr.training.Training1.control">
 	<App>
 		<pages>
 			<Page title="Title" showNavButton="true" navButtonPress="onNavBack">
 				<content>
 					<l:HorizontalLayout>
-						<VBox class="sapUiSmallMargin">
-							<f:SimpleForm editable="false" layout="ResponsiveGridLayout" title="Address" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
-								adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
-								singleContainerFullSize="false">
+						<VBox class="sapUiSmallMargin" width="40em">
+							<f:SimpleForm id="ElementBindingForm" editable="false" layout="ResponsiveGridLayout" title="{i18n>View2.ElementBinding}" labelSpanXL="3"
+								labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+								columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
 								<f:content>
-									<Label text="Name"/>
-									<Text text="{SupplierName}"/>
-									<Label text="Street/No."/>
-									<Text text="{Street} {HouseNumber}"/>
-									<Label text="ZIP Code/City"/>
-									<Text text="{ZIPCode} {City}"/>
-									<Label text="Country"/>
-									<Text text="{Country}"/>
+									<Label text="{/flightSet/Fluggesellschaft/#@sap:label}"/>
+									<Text text="{Fluggesellschaft}"/>
+									<Label text="{/flightSet/Flugzeugtyp/#@sap:label}"/>
+									<Text text="{Flugzeugtyp}"/>
+									<Label text="{/flightSet/Flugpreis/#@sap:label}"/>
+									<Text text="{Flugpreis} {Hauswaehrung}"/>
+									<Label text="{/flightSet/Flugdatum/#@sap:label}"/>
+									<Text text="{ path: 'Flugdatum', type: 'sap.ui.model.odata.type.Date'}"/>
 								</f:content>
 							</f:SimpleForm>
 						</VBox>
-						<VBox class="sapUiSmallMargin">
-							<f:SimpleForm editable="false" layout="ResponsiveGridLayout" title="Address" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
-								adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
-								singleContainerFullSize="false">
+						<VBox class="sapUiSmallMargin" width="40em">
+							<f:SimpleForm id="BindingModeForm" editable="false" layout="ResponsiveGridLayout" title="{i18n>View2.BindingMode}" labelSpanXL="3"
+								labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+								columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
 								<f:content>
-									<Label text="Name"/>
-									<Text text="{SupplierName}"/>
-									<Label text="Street/No."/>
-									<Text text="{Street} {HouseNumber}"/>
-									<Label text="ZIP Code/City"/>
-									<Text text="{ZIPCode} {City}"/>
-									<Label text="Country"/>
-									<Text text="{Country}"/>
+									<Label text="{i18n>View2.BindingmodeActive}"/>
+									<Text text="{viewModel>/bindingMode}"/>
+									<Label text="{i18n>View2.Inputfield}"/>
+									<Input value="{viewModel>/content}"/>
+									<Label text="{i18n>View2.ModelContent}"/>
+									<Text text="{viewModel>/content}"/>
+									<Label text="ExpressionBinding"/>
+									<Text text="{= ${viewModel>/test} === 'Data' ? ${i18n>View2.Filled} : ${i18n>View2.Notfilled} }"/>
+									<Button text="{i18n>View2.Buttontext}" press="onToggleButtonPress"/>
 								</f:content>
 							</f:SimpleForm>
 						</VBox>
 					</l:HorizontalLayout>
+					<FlexBox height="100px" alignItems="Center" justifyContent="Center">
+						<items>
+							<!--<custom:ProductRating id="rating" class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>-->
+							<custom:CustomPicker></custom:CustomPicker>
+						</items>
+					</FlexBox>
 				</content>
 			</Page>
 		</pages>

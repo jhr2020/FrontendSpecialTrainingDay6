@@ -4,7 +4,7 @@
 			<pages>
 				<Page id="page" title="{i18n>title}">
 					<content>
-						<Table id="flightTable" inset="false" items="{ path: '/flightSet' }" growing="true" growingThreshold="10">
+						<Table id="flightTable" inset="false" items="{ path: '/flightSet' , parameters: {operationMode: 'Server'} }" growing="true" growingThreshold="10">
 							<headerToolbar>
 								<Toolbar>
 									<Title text="{i18n>View1.flights}" level="H2"/>
