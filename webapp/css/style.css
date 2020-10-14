@@ -3,3 +3,12 @@
 .sampleClass > form > input {
 	color:red;
 }
+
+.center {
+	text-align: center;
+    width: 100%;
+}
+
+.redBackground {
+	background-color: red;
+}

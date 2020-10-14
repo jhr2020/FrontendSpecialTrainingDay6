@@ -1,5 +1,6 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
-	controllerName="com.cpro.jhr.training.Training1.controller.View2" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:custom="com.cpro.jhr.training.Training1.control">
+	controllerName="com.cpro.jhr.training.Training1.controller.View2" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:custom="com.cpro.jhr.training.Training1.control">
 	<App>
 		<pages>
 			<Page title="Title" showNavButton="true" navButtonPress="onNavBack">
@@ -45,7 +46,23 @@
 							<custom:CustomPicker></custom:CustomPicker>
 						</items>
 					</FlexBox>
+					<l:VerticalLayout class="center">
+						<Label labelFor="salesAmount" text="{i18n>View2.salesAmount}:"/>
+						<Input id="salesAmount"
+							value="{ parts: [ {path: 'viewModel>/salesAmount'}, {path: 'viewModel>/currencyCode'} ], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: true} }"
+							width="200px"/>
+					</l:VerticalLayout>
+					<List id="ShortProductList" headerText="Products" growing="true" growingScrollToLoad="true"
+							items="{ path: 'productsModel>/ProductCollection', factory: '.productListFactory' }"></List>
 				</content>
+				<footer>
+					<Toolbar width="100%" id="__toolbar2">
+						<content>
+							<Button icon="sap-icon://alert" text="{= ${message>/}.length }" visible="{= ${message>/}.length > 0 }" type="Emphasized"
+								press="onMessagePopoverPress"/>
+						</content>
+					</Toolbar>
+				</footer>
 			</Page>
 		</pages>
 	</App>
