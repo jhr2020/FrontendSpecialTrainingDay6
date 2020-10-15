@@ -52,7 +52,10 @@
 			"libs": {
 				"sap.ui.layout": {},
 				"sap.ui.core": {},
-				"sap.m": {}
+				"sap.m": {},
+				"sap.ui.unified": {
+					"minVersion": ""
+				}
 			}
 		},
 		"contentDensities": {
@@ -121,5 +124,9 @@
 				}
 			}
 		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/ztrai_jhr_trai/webapp",
+		"_version": "1.1.0"
 	}
 }
